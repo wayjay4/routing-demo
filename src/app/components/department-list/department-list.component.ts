@@ -17,6 +17,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class DepartmentListComponent implements OnInit {
   public selectedID;
+  public testData;
   public departments = [
     {"id": 1, "name":"Angular"},
     {"id": 2, "name":"Node"},
@@ -30,7 +31,10 @@ export class DepartmentListComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.selectedID = parseInt(params.get('id'));
+      this.testData = params.get('test');
     })
+
+    console.log("this.testData"); console.dir(this.testData);
   }
 
   onSelect(department){
