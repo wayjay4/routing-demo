@@ -9,8 +9,8 @@ import { DepartmentDetailComponent } from './components/department-detail/depart
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' }, // Note: possible values for pathMatch: {prefix,full}
   { path: '', component: HomePageComponent },
-  { path: 'departments', component: DepartmentListComponent },
-  { path: 'departments/:id', component: DepartmentDetailComponent },
+  { path: 'department-list', component: DepartmentListComponent },
+  { path: 'department-list/:id', component: DepartmentDetailComponent },
   { path: 'employees', component: EmployeeListComponent },
   { path: '**', component: PageNotFoundComponent } // Note: 'wildcard' route should be the last in the routing list
 ];
