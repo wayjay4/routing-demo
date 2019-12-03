@@ -5,12 +5,21 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DepartmentDetailComponent } from './components/department-detail/department-detail.component';
+import { DepartmentOverviewComponent } from './components/department-overview/department-overview.component';
+import { DepartmentContactComponent } from './components/department-contact/department-contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' }, // Note: possible values for pathMatch: {prefix,full}
   { path: '', component: HomePageComponent },
   { path: 'department-list', component: DepartmentListComponent },
-  { path: 'department-list/:id', component: DepartmentDetailComponent },
+  {
+    path: 'department-list/:id',
+    component: DepartmentDetailComponent,
+    children: [
+      { path: 'overview', component: DepartmentOverviewComponent },
+      { path: 'contact', component: DepartmentContactComponent }
+    ]
+  },
   { path: 'employees', component: EmployeeListComponent },
   { path: '**', component: PageNotFoundComponent } // Note: 'wildcard' route should be the last in the routing list
 ];
@@ -25,5 +34,7 @@ export const routingComponents = [
   EmployeeListComponent,
   HomePageComponent,
   PageNotFoundComponent,
-  DepartmentDetailComponent
+  DepartmentDetailComponent,
+  DepartmentOverviewComponent,
+  DepartmentContactComponent
 ];
