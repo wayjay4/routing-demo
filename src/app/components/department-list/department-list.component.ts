@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-list',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     <div>
       <h3>Department List</h3>
       <ul class="items">
-        <li *ngFor="let department of departments">
+        <li (click)="onSelect(department)" *ngFor="let department of departments">
           <span class="badge">{{department.id}}</span> {{department.name}}
         </li>
       </ul>
@@ -23,9 +24,12 @@ export class DepartmentListComponent implements OnInit {
     {"id": 5, "name":"Bootstrap"}
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onSelect(department){
+    this.router.navigate(['/departments', department.id]);
+  }
 }
