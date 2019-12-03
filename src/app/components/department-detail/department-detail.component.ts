@@ -8,9 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
       <p>
         You selected department with id = {{departmentID}}
       </p>
-      <a (click)="goPrevious()">Previous</a>
-      |
-      <a (click)="goNext()">Next</a>
+      <p>
+        <a (click)="goPrevious()">Previous</a>
+        |
+        <a (click)="goNext()">Next</a>
+      </p>
+      <p>
+        <button (click)="gotoDepartments()">Back</button>
+      </p>
     </div>
   `,
   styles: []
@@ -35,5 +40,10 @@ export class DepartmentDetailComponent implements OnInit {
   goNext(){
     var nextID = this.departmentID + 1;
     this.router.navigate(['/departments', nextID])
+  }
+
+  gotoDepartments(){
+    var selectedID = this.departmentID ? this.departmentID : null;
+    this.router.navigate(['/departments', {id: selectedID}]);
   }
 }
