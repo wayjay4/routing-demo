@@ -16,8 +16,9 @@ const routes: Routes = [
     path: 'department-list/:id',
     component: DepartmentDetailComponent,
     children: [
+      { path: '', redirectTo: 'contact', pathMatch: 'full' },
       { path: 'overview', component: DepartmentOverviewComponent },
-      { path: 'contact', component: DepartmentContactComponent }
+      { path: 'contact', component: DepartmentContactComponent },
     ]
   },
   { path: 'employees', component: EmployeeListComponent },
